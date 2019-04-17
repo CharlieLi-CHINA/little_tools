@@ -19,21 +19,21 @@ def tiqi_folder_name(path):#获取输入路径的最后文件夹名字
 def rename(path,color,old_type,new_type):
     
     filelist = os.listdir(path)
-    total_num = len(filelist)
 
     i = 0
 
     for item in filelist:
-        if item.endswith(old_type):
-            src = os.path.join(os.path.abspath(path), item)
-#                dst = os.path.join(os.path.abspath(path), '00100' + format(str(i), '0>3s') + '.jpg')
-            bianhao = str(i).zfill(5)
-            dst = os.path.join(os.path.abspath(path), color + "_" + bianhao + new_type)
+        if item.endswith(old_type):#不是指定的文件类型，不会执行
+            src = os.path.join(os.path.abspath(path), item)#旧路径
+
+            bianhao = str(i).zfill(5)#以0填充到5位数字
+#            biaohao = str(random.randint(2,20000)).zfill(5)
+#            biaohao = str(random.randrange(2, 20000, 2)).zfill(5)#偶数命名
+            dst = os.path.join(os.path.abspath(path), color + "_" + bianhao + new_type)#新路径
             os.rename(src, dst)
-#                print ('converting %s to %s ...' % (src, dst))
+
             i = i + 1
-#        print ('total %d to rename & converted %d jpgs' % (total_num, i))        
-#rename()
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:  # 读取参数名作为文件名
         path = sys.argv[1]
@@ -41,11 +41,12 @@ if __name__ == '__main__':
     else:
         path = "D:\\Anaconda2\\liqilv\\litle_tool\\rename\\red"
      
-    old_type = sys.argv[2] if len(sys.argv) > 2 else ".jpg"
-    new_type = sys.argv[3] if len(sys.argv) > 3 else ".jpg"
+    old_type = sys.argv[2] if len(sys.argv) > 2 else ".jpg" # 输入类别
+    new_type = sys.argv[3] if len(sys.argv) > 3 else ".jpg"# 重命名类别
     
-    folder_name = tiqi_folder_name(path)
+    folder_name = tiqi_folder_name(path)#提取输入文件夹的名字，重命名以文件夹名字为前缀
     folder_name = str(folder_name)
+    
     rename(path,folder_name,old_type,new_type)
     
     
