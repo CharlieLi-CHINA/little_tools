@@ -3,10 +3,20 @@
 Created on Thu Apr 11 10:36:51 2019
 
 @author: liqilv
-image_path/
-    xxx.jpg
-    xxy.jpp
-    xxu.jpg
+data/
+    001/
+        xxx.jpg
+        xxy.jpp
+        xxu.jpg
+    002/
+        xxx.jpg
+        xxy.jpp
+        xxu.jpg
+    003/
+        xxx.jpg
+        xxy.jpp
+        xxu.jpg
+    ...
 
 run in windows python2: python xxx.py [origin_data_path] [new_data_path]
 sample: python .\rgb2hsv_0411.py .\data\ .\data2\
